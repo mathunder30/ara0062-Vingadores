@@ -29,7 +29,8 @@ body {
   background-color: #f4eff2;
 
   max-width: 860px;
-  margin: 0 auto;        /* 0 em cima/embaixo, automático nas laterais */
+  margin: 0 auto;
+  /* 0 em cima/embaixo, automático nas laterais */
   padding: 0 20px 40px;
 }
 
@@ -38,14 +39,17 @@ body {
    2. CABEÇALHO
    ========================================================================== */
 header {
-  background-color: #0b0568;
+  background-color: #090455;
   color: #ffffff;
   padding: 36px 28px;
+  text-align: center;
+
 }
 
 header h1 {
   margin: 0 0 6px;
-  font-size: 2.1rem;
+  font-size: 3.0rem;
+
 }
 
 /* Descendente: só o parágrafo que está dentro do header. O seletor "p"
@@ -67,6 +71,11 @@ header p {
 nav {
   background-color: #0b0568;
   padding: 0 16px;
+
+  position: sticky;
+  /*o menu fica grudado com o rolamento da tela*/
+  top: 0;
+
 }
 
 nav ul {
@@ -85,7 +94,8 @@ nav a {
   display: inline-block;
   padding: 14px 16px;
   color: #f0d7e6;
-  text-decoration: none;     /* tira o sublinhado do link */
+  text-decoration: none;
+  /* tira o sublinhado do link */
   font-weight: bold;
   font-size: 0.95rem;
 }
@@ -105,7 +115,8 @@ main {
 }
 
 /* Agrupamento: os dois títulos compartilham a cor. */
-h2, h3 {
+h2,
+h3 {
   color: #0b0568;
 }
 
@@ -124,7 +135,8 @@ a:hover {
 }
 
 img {
-  max-width: 100%;       /* a imagem nunca estoura a coluna */
+  max-width: 100%;
+  /* a imagem nunca estoura a coluna */
   height: auto;
   border-radius: 6px;
 }
@@ -158,7 +170,8 @@ caption {
   padding-bottom: 10px;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #e2d8de;
   padding: 10px 14px;
   text-align: left;
@@ -248,7 +261,7 @@ input[type="checkbox"] {
   margin-right: 8px;
 }
 
-input[type="checkbox"] + label {
+input[type="checkbox"]+label {
   display: inline;
   font-weight: normal;
 }
