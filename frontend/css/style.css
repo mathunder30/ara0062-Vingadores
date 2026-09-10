@@ -115,6 +115,12 @@ main {
 }
 
 /* Agrupamento: os dois títulos compartilham a cor. */
+h1 {
+    color: #F5F5F5;
+    text-shadow: 
+        0 0 10px #7C3AED,
+        0 0 30px #7C3AED;
+}
 h2,
 h3 {
   color: #0b0568;
