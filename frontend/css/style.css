@@ -1,351 +1,1010 @@
-/* ==========================================================================
-   ARA0062 — folha de estilos do projeto
-   Gabarito da entrega 3 (ciclo 4): a página da aula 03 com aparência.
-
-   Este arquivo só usa o que foi visto na aula 04:
-     seletor de tipo · classe · id · agrupamento · descendente e filho ·
-     seletor de atributo · pseudo-classes · cascata e herança.
-
-   Caixa (box model), tipografia com web font e layout em flex/grid entram
-   nas aulas 05 e 06. O que está aqui já resolve a entrega — e é honesto
-   dizer que ainda não é o jeito definitivo de fazer o menu.
-
-   Ordem do arquivo, de fora para dentro: página, cabeçalho, menu, conteúdo,
-   tabela, formulário, rodapé. Manter uma ordem previsível é metade da
-   manutenção.
-   ========================================================================== */
 
 
-/* ==========================================================================
-   1. A PÁGINA
-   Tudo o que está em body é herdado por quem está dentro: a fonte e a cor do
-   texto são escritas UMA vez, aqui.
-   ========================================================================== */
+:root {
+  --bg:#0b0c10;
+  --white:#f4f2ef;
+  --muted:#aaa9b0;
+  --red:#f0444f;
+  --line:#303138;
+  --body:Arial,sans-serif;
+  --display:Arial,sans-serif
+}
+
+* {
+  box-sizing:border-box
+}
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:80px
+}
+
 body {
-  font-family: Rajdhani;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #231f20;
-  background-color: #9b9bc8;
-
-  max-width: 860px;
-  margin: 0 auto;
-  /* 0 em cima/embaixo, automático nas laterais */
-  padding: 0 20px 40px;
-}
-
-
-/* ==========================================================================
-   2. CABEÇALHO
-   ========================================================================== */
-header {
-  background-color: #090455;
-  color: #ffffff;
-  padding: 36px 28px;
-  text-align: center;
-
-}
-
-header h1 {
-  margin: 0 0 6px;
-  font-size: 3.0rem;
-
-}
-
-/* Descendente: só o parágrafo que está dentro do header. O seletor "p"
-   sozinho pegaria todos os parágrafos da página. */
-header p {
-  margin: 0;
-  color: #f0d7e6;
-}
-
-
-/* ==========================================================================
-   3. O MENU
-   O <nav> é uma <ul>, como se aprendeu na aula 03. Aqui ela deixa de parecer
-   uma lista de compras.
-
-   list-style: none tira a bolinha — a bolinha sempre foi aparência, e agora
-   quem manda nela é o CSS.
-   ========================================================================== */
-nav {
-  background-color: #0b0568;
-  padding: 0 16px;
-
-  position: sticky;
-  /*o menu fica grudado com o rolamento da tela*/
-  top: 0;
-
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* inline-block põe os itens lado a lado. É o jeito clássico, e funciona.
-   O jeito de hoje é display: flex no <ul> — aula 05. */
-nav li {
-  display: inline-block;
-}
-
-nav a {
-  display: inline-block;
-  padding: 14px 16px;
-  color: #f0d7e6;
-  text-decoration: none;
-  /* tira o sublinhado do link */
-  font-weight: Rajdhani;
-  font-size: 0.95rem;
-}
-
-nav a:hover {
-  background-color: #000000;
-  color: #ffffff;
-}
-
-
-/* ==========================================================================
-   4. CONTEÚDO
-   ========================================================================== */
-main {
-  background-color: #ffffff;
-  padding: 8px 32px 32px;
-}
-
-/* Agrupamento: os dois títulos compartilham a cor. */
-h1 {
-    color: #F5F5F5;
-    text-shadow: 
-        0 0 10px #7C3AED,
-        0 0 30px #7C3AED;
-}
-h2,
-h3 {
-  color: #0b0568;
-}
-
-h2 {
-  border-bottom: 2px solid #f0d7e6;
-  padding-bottom: 8px;
-  margin-top: 36px;
+  margin:0;
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--body);
+  font-size:14px;
+  line-height:1.65
 }
 
 a {
-  color: #0b0568;
+  color:inherit;
+  text-decoration:none
 }
 
-a:hover {
-  color: #ff1a00;
+.topbar {
+  height:78px;
+  padding:0 6vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  position:absolute;
+  z-index:10;
+  top:0;
+  width:100%;
+  background:rgba(9,10,14,.72);
+  backdrop-filter:blur(10px)
 }
 
-img {
-  max-width: 100%;
-  /* a imagem nunca estoura a coluna */
-  height: auto;
-  border-radius: 6px;
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font:700 20px var(--display);
+  letter-spacing:.1em;
+  line-height:.92
 }
 
-/* As listas de conteúdo continuam sendo listas — só ficam mais arejadas. */
-main ul li,
-main ol li {
-  margin-bottom: 6px;
+.brand small {
+  display:block;
+  font:600 9px var(--body);
+  letter-spacing:.23em;
+  color:var(--muted);
+  margin-top:6px
 }
 
-strong {
-  color: #560035;
+.brand-mark {
+  width:35px;
+  height:35px;
+  display:grid;
+  place-items:center;
+  color:var(--red);
+  border:1px solid var(--red);
+  font:700 24px var(--display);
+  transform:skew(-8deg)
+}
+
+nav {
+  display:flex;
+  gap:36px;
+  color:#d6d5d1;
+  font-size:12px
+}
+
+nav a,.footer-links a {
+  transition:color .2s
+}
+
+nav a:hover,.footer-links a:hover {
+  color:var(--red)
+}
+
+.nav-cta {
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  border-bottom:1px solid var(--red);
+  padding:7px 0
+}
+
+.nav-cta span {
+  color:var(--red);
+  margin-left:15px
+}
+
+.hero {
+  min-height:760px;
+  height:100vh;
+  max-height:1000px;
+  position:relative;
+  overflow:hidden;
+  background:radial-gradient(ellipse at 72% 42%,#5e2227 0,#25161d 22%,#101116 49%,#0b0c10 75%)
+}
+
+.hero:after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(9,10,14,.98) 0%,rgba(9,10,14,.83) 39%,rgba(9,10,14,.16) 75%),linear-gradient(0deg,#0b0c10 0%,transparent 22%);
+  z-index:1
+}
+
+.hero-grid {
+  position:absolute;
+  inset:0;
+  opacity:.11;
+  background-image:linear-gradient(rgba(255,255,255,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.14) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:linear-gradient(90deg,transparent 20%,black)
+}
+
+.moon {
+  position:absolute;
+  width:min(42vw,570px);
+  aspect-ratio:1;
+  border-radius:50%;
+  right:13%;
+  top:15%;
+  background:radial-gradient(circle at 38% 35%,#e5a59a,#a9434b 39%,#55232d 67%,#201319 73%);
+  box-shadow:0 0 100px #b2383766,0 0 230px #8a293544
+}
+
+.hero-silhouette {
+  position:absolute;
+  z-index:1;
+  bottom:0;
+  right:5%;
+  height:76%;
+  width:48%;
+  background:linear-gradient(100deg,#141319,#08090d 72%);
+  clip-path:polygon(46% 0,55% 6%,58% 21%,64% 27%,61% 40%,70% 53%,83% 60%,100% 82%,100% 100%,0 100%,8% 78%,17% 63%,25% 58%,32% 39%,35% 21%);
+  opacity:.92
+}
+
+.hero-content {
+  position:absolute;
+  z-index:2;
+  top:22%;
+  left:11%;
+  max-width:540px
+}
+
+.eyebrow {
+  color:var(--red);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.2em;
+  text-transform:uppercase
+}
+
+.pulse {
+  display:inline-block;
+  width:7px;
+  height:7px;
+  background:var(--red);
+  border-radius:50%;
+  margin-right:8px;
+  box-shadow:0 0 12px var(--red)
+}
+
+h1,h2,h3,p {
+  margin-top:0
+}
+
+h1,h2 {
+  font-family:var(--display);
+  font-weight:800;
+  line-height:.91;
+  letter-spacing:.005em;
+  margin-bottom:25px
+}
+
+h1 {
+  font-size:clamp(66px,9vw,126px);
+  margin-top:26px
+}
+
+h1 em,h2 em {
+  font-style:normal;
+  color:var(--red)
+}
+
+.hero-copy {
+  max-width:410px;
+  color:#c1c0c3;
+  font-size:14px
+}
+
+.hero-actions {
+  display:flex;
+  align-items:center;
+  gap:30px;
+  margin-top:32px
+}
+
+.button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:32px;
+  padding:14px 18px;
+  font:700 11px var(--body);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  border:0;
+  cursor:pointer
+}
+
+.button span {
+  font-size:16px
+}
+
+.button-red {
+  background:var(--red);
+  color:#fff;
+  transition:background .2s,transform .2s
+}
+
+.button-red:hover {
+  background:#d92732;
+  transform:translateY(-2px)
+}
+
+.text-link,.under-link {
+  font-size:11px;
+  letter-spacing:.04em
+}
+
+.text-link span {
+  color:var(--red);
+  margin-left:8px
+}
+
+.hero-stamp {
+  position:absolute;
+  z-index:3;
+  right:7%;
+  top:24%;
+  border-left:1px solid #fa343e;
+  padding:5px 0 5px 14px;
+  display:grid;
+  gap:8px;
+  font:600 9px var(--body);
+  letter-spacing:.13em;
+  color:#bcb8b9
+}
+
+.hero-stamp b {
+  font:600 14px var(--display);
+  color:#fff;
+  letter-spacing:.08em
+}
+
+.hero-bottom {
+  position:absolute;
+  bottom:26px;
+  left:6vw;
+  right:6vw;
+  z-index:3;
+  display:flex;
+  justify-content:space-between;
+  font-size:9px;
+  letter-spacing:.14em;
+  color:#87868c
+}
+
+.section-pad {
+  padding:105px 11vw
+}
+
+.section-label {
+  display:flex;
+  align-items:center;
+  gap:13px;
+  color:#a3a2a6;
+  font-size:9px;
+  letter-spacing:.14em
+}
+
+.section-label i {
+  height:1px;
+  background:var(--line);
+  flex:1
+}
+
+.intro {
+  background:#0b0c10
+}
+
+.intro-layout {
+  display:grid;
+  grid-template-columns:1fr .7fr;
+  gap:9vw;
+  padding:70px 0 58px;
+  align-items:end
+}
+
+.intro h2,.world h2,.section-heading h2,.contact h2 {
+  font-size:clamp(48px,7vw,88px)
+}
+
+.intro-text {
+  max-width:410px;
+  color:var(--muted)
+}
+
+.intro-text .lead {
+  font:500 22px/1.3 var(--display);
+  color:#eee;
+  margin-bottom:18px
+}
+
+.intro-text strong {
+  color:#fff
+}
+
+.under-link {
+  display:inline-block;
+  margin-top:14px;
+  padding-bottom:5px;
+  border-bottom:1px solid var(--red)
+}
+
+.under-link span {
+  color:var(--red);
+  padding-left:24px
+}
+
+.stats {
+  border-top:1px solid var(--line);
+  padding-top:23px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr) 1.15fr;
+  gap:20px
+}
+
+.stats div {
+  display:flex;
+  align-items:center;
+  gap:14px
+}
+
+.stats b {
+  font:700 36px var(--display);
+  color:var(--red)
+}
+
+.stats span,.stat-note {
+  font-size:9px;
+  line-height:1.45;
+  letter-spacing:.13em;
+  color:#aaa
+}
+
+.stat-note {
+  align-self:center;
+  justify-self:end;
+  color:#ddd
+}
+
+.world {
+  min-height:560px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  background:#111217
+}
+
+.world-art {
+  min-height:560px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(145deg,#21151b,#43242c 45%,#151218 90%)
+}
+
+.world-art:after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(0deg,#111217 0%,transparent 28%),linear-gradient(90deg,transparent 70%,#111217 100%)
+}
+
+.world-sun {
+  position:absolute;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,#fa9690,#ce4850 64%,#74272e);
+  top:14%;
+  left:30%;
+  box-shadow:0 0 90px #f04c4c55
+}
+
+.world-ridge {
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:62%;
+  clip-path:polygon(0 67%,12% 49%,24% 59%,39% 30%,54% 53%,68% 17%,82% 57%,100% 33%,100% 100%,0 100%)
+}
+
+.ridge-back {
+  background:linear-gradient(120deg,#43313b,#17191f);
+  opacity:.8
+}
+
+.ridge-front {
+  height:44%;
+  background:linear-gradient(120deg,#1a1c23,#090a0e);
+  clip-path:polygon(0 46%,19% 24%,33% 54%,50% 15%,68% 47%,83% 21%,100% 50%,100% 100%,0 100%)
+}
+
+.coord,.world-index {
+  position:absolute;
+  z-index:2;
+  bottom:27px;
+  font-size:9px;
+  letter-spacing:.14em;
+  color:#cfcbca
+}
+
+.coord {
+  left:8%
+}
+
+.world-index {
+  right:8%
+}
+
+.world-copy {
+  padding:75px 11% 65px 8%;
+  align-self:center
+}
+
+.world-copy .eyebrow {
+  margin-top:60px
+}
+
+.world-copy h2 {
+  font-size:clamp(45px,5vw,68px)
+}
+
+.world-copy>p:not(.eyebrow) {
+  color:#aaa;
+  max-width:430px
+}
+
+.section-heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin:65px 0 35px
+}
+
+.section-heading h2 {
+  margin:0
+}
+
+.section-heading p {
+  margin:0 4vw 5px 0;
+  color:var(--muted);
+  font-size:12px
+}
+
+.characters {
+  background:#0b0c10
+}
+
+.character-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px
+}
+
+.character {
+  min-width:0
+}
+
+.portrait {
+  height:350px;
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  background:#171820
+}
+
+.portrait-image {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 25%;
+  z-index:1
+}
+
+.portrait:before {
+  content:'';
+  position:absolute;
+  width:230px;
+  height:230px;
+  border-radius:50%;
+  background:radial-gradient(circle,#73313b 0,#33212c 53%,transparent 70%);
+  top:20px;
+  z-index:0;
+  pointer-events:none
+}
+
+.portrait-two:before {
+  background:radial-gradient(circle,#51456a 0,#282436 53%,transparent 70%)
+}
+
+.portrait-three:before {
+  background:radial-gradient(circle,#786045 0,#322a25 53%,transparent 70%)
+}
+
+.portrait:after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(0deg,#0e0f13 0%,transparent 45%),repeating-linear-gradient(0deg,transparent 0 7px,#ffffff06 8px);
+  z-index:3;
+  pointer-events:none
+}
+
+.portrait-orbit {
+  position:absolute;
+  width:210px;
+  height:290px;
+  border:1px solid #ffffff22;
+  border-radius:50%;
+  transform:rotate(31deg);
+  z-index:2;
+  pointer-events:none
+}
+
+.portrait small {
+  position:absolute;
+  left:20px;
+  bottom:18px;
+  z-index:4;
+  font-size:9px;
+  letter-spacing:.16em;
+  color:#c9c7ca
+}
+
+.character-info {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:17px 3px;
+  border-bottom:1px solid var(--line)
+}
+
+.character-info h3 {
+  font:700 21px var(--display);
+  letter-spacing:.06em;
+  margin:0
+}
+
+.character-info p {
+  color:var(--muted);
+  font-size:11px;
+  margin:2px 0 0
+}
+
+.arrow {
+  color:var(--red);
+  font-size:18px
+}
+
+.editions {
+  background:#111217
+}
+
+.edition-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  max-width:900px;
+  margin:auto
+}
+
+.edition {
+  padding:34px;
+  border:1px solid var(--line);
+  background:#0d0e12;
+  position:relative
+}
+
+.edition-featured {
+  border-color:#8c242b;
+  background:linear-gradient(150deg,#241318,#0d0e12 65%)
+}
+
+.edition-tag {
+  font-size:9px;
+  letter-spacing:.16em;
+  color:var(--red)
+}
+
+.edition h3 {
+  font:700 31px var(--display);
+  margin:20px 0 3px
+}
+
+.edition>p {
+  color:var(--muted);
+  font-size:12px
+}
+
+.edition-price {
+  font:700 45px var(--display);
+  margin:24px 0
+}
+
+.edition-price span {
+  font-size:23px
+}
+
+.edition ul {
+  padding:0;
+  list-style:none;
+  color:#c5c3c4;
+  font-size:12px;
+  line-height:2
+}
+
+.edition li:before {
+  content:'+';
+  color:var(--red);
+  margin-right:10px
+}
+
+.button-outline {
+  border:1px solid #777;
+  background:transparent
+}
+
+.button-outline:hover {
+  border-color:var(--red)
+}
+
+.price-note {
+  text-align:center;
+  color:#85858c;
+  font-size:10px;
+  margin-top:22px
+}
+
+.contact {
+  display:grid;
+  grid-template-columns:1fr .75fr;
+  gap:10vw;
+  background:radial-gradient(ellipse at 10% 90%,#38171e,#0b0c10 55%)
+}
+
+.contact-copy .eyebrow {
+  margin-top:65px
+}
+
+.contact h2 {
+  font-size:clamp(44px,6vw,76px)
+}
+
+.contact-copy>p:last-child {
+  color:var(--muted);
+  max-width:370px
+}
+
+.contact-form {
+  align-self:center;
+  display:flex;
+  flex-direction:column;
+  padding:30px;
+  background:#111319;
+  border:1px solid var(--line)
+}
+
+.contact-form>label:not(.check) {
+  font-size:9px;
+  color:#c2c0c1;
+  letter-spacing:.12em;
+  margin:0 0 6px
+}
+
+.contact-form input:not([type=checkbox]),.contact-form select {
+  width:100%;
+  background:#0c0d11;
+  border:1px solid #303138;
+  color:#eee;
+  padding:13px 12px;
+  margin-bottom:19px;
+  font:12px var(--body);
+  outline:none
+}
+
+.contact-form input:focus,.contact-form select:focus {
+  border-color:var(--red)
+}
+
+.contact-form input::placeholder {
+  color:#73737a
+}
+
+.check {
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  font-size:10px;
+  color:#a9a8ad;
+  margin:0 0 20px
+}
+
+.check input {
+  accent-color:var(--red);
+  margin-top:3px
+}
+
+.contact-form .button {
+  width:100%
+}
+
+.footer {
+  padding:36px 6vw 24px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr auto;
+  align-items:center;
+  gap:30px;
+  border-top:1px solid var(--line)
+}
+
+.footer>p {
+  font:600 12px/1.4 var(--display);
+  letter-spacing:.09em;
+  color:#b3b2b7;
+  margin:0
+}
+
+.footer-links {
+  display:flex;
+  gap:20px;
+  font-size:10px;
+  color:#b5b4b9
+}
+
+.copyright {
+  font-size:8px;
+  color:#77777e;
+  letter-spacing:.1em;
+  text-align:right
 }
 
 
-/* ==========================================================================
-   5. A TABELA
-   border-collapse é a primeira linha de qualquer tabela: sem ele, cada
-   célula desenha a própria borda e ficam duas linhas entre vizinhas.
-   ========================================================================== */
-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 16px 0 8px;
+@media(max-width:850px) {
+  nav {
+  gap:17px
 }
 
-caption {
-  text-align: left;
-  font-weight: Rajdhani;
-  color: #053e60;
-  padding-bottom: 10px;
+.section-pad {
+  padding:85px 7vw
 }
 
-th,
-td {
-  border: 1px solid #e2d8de;
-  padding: 10px 14px;
-  text-align: left;
+.hero-content {
+  left:8%;
+  top:24%
 }
 
-/* Descendente: o th de dentro do thead é cabeçalho de coluna. */
-thead th {
-  background-color: #053e60;
-  color: #ffffff;
+.hero-silhouette {
+  right:-8%;
+  width:58%
 }
 
-/* E o th de dentro do tbody é cabeçalho de linha — outro papel, outro peso. */
-tbody th {
-  background-color: #f4eff2;
-  color: #0b0568;
+.world-copy {
+  padding-right:7%
 }
 
-/* Zebra pela posição da linha. Nenhuma classe foi escrita no HTML. */
-tbody tr:nth-child(even) {
-  background-color: #faf7f9;
+.footer {
+  grid-template-columns:1fr 1fr
 }
 
-tbody tr:hover {
-  background-color: #f0d7e6;
+.copyright {
+  text-align:left
+}
+
+.character-grid {
+  gap:12px
+}
+
+.portrait {
+  height:290px
 }
 
 
-/* ==========================================================================
-   6. O FORMULÁRIO DE CONTATO
-   ========================================================================== */
-form {
-  background-color: #f4eff2;
-  padding: 24px;
-  border-radius: 8px;
-  border-top: 4px solid #0b0568;
-}
-
-fieldset {
-  border: 1px solid #e2d8de;
-  border-radius: 6px;
-  background-color: #ffffff;
-  padding: 18px 20px 6px;
-  margin-bottom: 18px;
-}
-
-legend {
-  color: #0b0568;
-  font-weight: Rajdhani;
-  padding: 0 8px;
-}
-
-/* Cada campo está embrulhado num <div>: é ele que separa um do outro. */
-form div {
-  margin-bottom: 16px;
-}
-
-label {
-  display: block;
-  font-weight: Rajdhani;
-  font-size: 0.95rem;
-  margin-bottom: 5px;
-}
-
-/* Seletor de atributo: escolhe o input pelo type.
-   Sem isso, uma regra "input { width: 100% }" esticaria também o checkbox. */
-input[type="text"],
-input[type="email"],
-select,
-textarea {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #c9b6c2;
-  border-radius: 4px;
-
-  /* Campo de formulário não herda a fonte do body — tem de pedir. */
-  font-family: Rajdhani;
-  font-size: 1rem;
-}
-
-textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-input[type="checkbox"] {
-  width: auto;
-  margin-right: 8px;
-}
-
-input[type="checkbox"]+label {
-  display: inline;
-  font-weight: normal;
-}
-
-/* :focus é acessibilidade, não enfeite: é como quem navega por Tab sabe onde
-   está. Nunca apague o contorno sem pôr outra marca no lugar. */
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 3px solid #dfa03f;
-  outline-offset: 1px;
-  border-color: #0b0568;
-}
-
-button {
-  font-family: Rajdhani;
-  font-size: 1rem;
-  font-weight: Rajdhani;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button[type="submit"] {
-  background-color: #0b0568;
-  color: #ffffff;
-}
-
-button[type="submit"]:hover {
-  background-color: #0b0568;
-}
-
-/* O botão secundário não compete com o principal. */
-button[type="reset"] {
-  background-color: #ffffff;
-  color: #6e6a70;
-  border: 1px solid #c9b6c2;
-  margin-left: 8px;
 }
 
 
-/* ==========================================================================
-   7. BARRA LATERAL E RODAPÉ
-   ========================================================================== */
-aside {
-  background-color: #ffffff;
-  border-left: 4px solid #dfa03f;
-  padding: 20px 28px;
-  margin-top: 4px;
+@media(max-width:620px) {
+  .topbar {
+  height:68px;
+  padding:0 5vw
 }
 
-aside h2 {
-  margin-top: 8px;
-  font-size: 1.2rem;
-  border-bottom: none;
+.topbar nav {
+  display:none
 }
 
-footer {
-  background-color: #380022;
-  color: #c9b6c2;
-  padding: 20px 28px;
-  font-size: 0.9rem;
+.brand {
+  font-size:18px
 }
 
-footer p {
-  margin: 0;
+.nav-cta {
+  font-size:9px
+}
+
+.hero {
+  height:790px;
+  min-height:700px;
+  max-height:900px
+}
+
+.hero-content {
+  top:21%;
+  left:7%;
+  right:7%
+}
+
+h1 {
+  font-size:clamp(62px,17vw,95px)
+}
+
+.hero-copy {
+  max-width:340px
+}
+
+.moon {
+  width:78vw;
+  right:-16%;
+  top:38%;
+  opacity:.75
+}
+
+.hero-silhouette {
+  width:78%;
+  height:54%;
+  right:-16%;
+  opacity:.72
+}
+
+.hero-stamp {
+  right:7%;
+  top:15%
+}
+
+.hero-bottom {
+  left:7%;
+  right:7%;
+  font-size:7px
+}
+
+.hero-bottom span:nth-child(2) {
+  display:none
+}
+
+.hero-actions {
+  gap:18px
+}
+
+.section-pad {
+  padding:72px 7vw
+}
+
+.intro-layout {
+  grid-template-columns:1fr;
+  gap:20px;
+  padding:52px 0 40px
+}
+
+.intro h2,.section-heading h2 {
+  font-size:64px
+}
+
+.stats {
+  grid-template-columns:repeat(3,1fr);
+  gap:8px
+}
+
+.stats div {
+  display:block
+}
+
+.stats b {
+  display:block;
+  font-size:32px
+}
+
+.stats span {
+  font-size:8px
+}
+
+.stat-note {
+  display:none
+}
+
+.world {
+  grid-template-columns:1fr
+}
+
+.world-art {
+  min-height:340px
+}
+
+.world-copy {
+  padding:45px 7vw 65px
+}
+
+.world-copy .eyebrow {
+  margin-top:42px
+}
+
+.world-copy h2 {
+  font-size:58px
+}
+
+.section-heading {
+  display:block;
+  margin:50px 0 27px
+}
+
+.section-heading p {
+  margin-top:16px
+}
+
+.character-grid {
+  grid-template-columns:1fr;
+  gap:23px
+}
+
+.portrait {
+  height:370px
+}
+
+.edition-grid {
+  grid-template-columns:1fr
+}
+
+.edition {
+  padding:27px
+}
+
+.contact {
+  grid-template-columns:1fr;
+  gap:25px
+}
+
+.contact-copy .eyebrow {
+  margin-top:44px
+}
+
+.contact h2 {
+  font-size:58px
+}
+
+.contact-form {
+  padding:22px
+}
+
+.footer {
+  grid-template-columns:1fr 1fr;
+  gap:23px 12px;
+  padding:30px 7vw
+}
+
+.footer-links {
+  flex-wrap:wrap;
+  gap:12px
+}
+
+.copyright {
+  grid-column:1/-1
+}
+
+.contact-copy>p:last-child {
+  font-size:13px
 }
 
 
-/* ==========================================================================
-   8. UMA CLASSE, PARA MOSTRAR QUE ELA EXISTE
-   Classe é o crachá: use-a quando o que você quer estilizar não é "todo
-   elemento X", e sim "estes aqui". Ponha class="destaque" em qualquer
-   parágrafo do index.html para ver.
-   ========================================================================== */
-.destaque {
-  background-color: #f0d7e6;
-  border-left: 4px solid #0b0568;
-  padding: 12px 16px;
 }
