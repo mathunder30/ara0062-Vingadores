@@ -1,5 +1,5 @@
 
-
+/* Cores, tipografia e medidas-base reutilizadas no site. */
 :root {
   --bg:#0b0c10;
   --white:#f4f2ef;
@@ -33,6 +33,7 @@ a {
   text-decoration:none
 }
 
+/* Cabeçalho, marca e navegação principal. */
 .topbar {
   height:78px;
   padding:0 6vw;
@@ -104,6 +105,7 @@ nav a:hover,.footer-links a:hover {
   margin-left:15px
 }
 
+/* Abertura: banner principal, chamada do jogo e elementos de cenário. */
 .hero {
   min-height:760px;
   height:100vh;
@@ -290,6 +292,7 @@ h1 em,h2 em {
   color:#87868c
 }
 
+/* Tipografia e elementos de apoio compartilhados pelas seções. */
 .section-pad {
   padding:105px 11vw
 }
@@ -309,6 +312,7 @@ h1 em,h2 em {
   flex:1
 }
 
+/* O jogo: apresentação da premissa e dados de destaque. */
 .intro {
   background:#0b0c10
 }
@@ -384,6 +388,7 @@ h1 em,h2 em {
   color:#ddd
 }
 
+/* Universo: cenário visual e informações sobre o conflito da história. */
 .world {
   min-height:560px;
   display:grid;
@@ -471,6 +476,7 @@ h1 em,h2 em {
   max-width:430px
 }
 
+/* Cabeçalho reutilizado pelas seções com título e texto auxiliar. */
 .section-heading {
   display:flex;
   justify-content:space-between;
@@ -488,6 +494,7 @@ h1 em,h2 em {
   font-size:12px
 }
 
+/* Personagens: cartões, retratos e identificação dos protagonistas. */
 .characters {
   background:#0b0c10
 }
@@ -596,6 +603,7 @@ h1 em,h2 em {
   font-size:18px
 }
 
+/* Edições: cartões das versões e informações de preço. */
 .editions {
   background:#111217
 }
@@ -675,6 +683,7 @@ h1 em,h2 em {
   margin-top:22px
 }
 
+/* Contato: apresentação do formulário e estilos dos campos. */
 .contact {
   display:grid;
   grid-template-columns:1fr .75fr;
@@ -748,6 +757,7 @@ h1 em,h2 em {
   width:100%
 }
 
+/* Rodapé: marca, links e informações do projeto. */
 .footer {
   padding:36px 6vw 24px;
   display:grid;
@@ -778,7 +788,7 @@ h1 em,h2 em {
   text-align:right
 }
 
-
+/* Ajustes de espaçamento e layout para telas médias. */
 @media(max-width:850px) {
   nav {
   gap:17px
@@ -821,7 +831,7 @@ h1 em,h2 em {
 
 }
 
-
+/* Layout compacto para celulares. */
 @media(max-width:620px) {
   .topbar {
   height:68px;
@@ -1014,10 +1024,7 @@ h1 {
 
 
 }
-
-
-
-
+/* Aparência das mensagens de validação do formulário. */
 /* Mensagens de validação do formulario*/
 .mensagem-erro {
     display: block;
@@ -1045,9 +1052,7 @@ h1 {
 
 
 
-/* =================================
-   MODAL DE PERSONAGENS - ECLIPSE
-================================= */
+/* Janela de detalhes dos personagens, exibida pelo JavaScript. */
 
 .character {
     cursor: pointer;
@@ -1163,7 +1168,7 @@ h1 {
     letter-spacing: 1px;
 }
 
-/* ANIMAÇÕES */
+/* Animações de entrada e saída do modal. */
 
 @keyframes modalFade {
     from { opacity: 0; }
@@ -1182,8 +1187,7 @@ h1 {
     }
 }
 
-/* RESPONSIVIDADE */
-
+/* Ajustes do modal para telas pequenas. */
 @media (max-width: 600px) {
     .modal-body {
         padding: 25px;
@@ -1197,9 +1201,7 @@ h1 {
         font-size: 8px;
     }
 }
-
-
-
+/* Camada de partículas decorativas criada pelo script.js. */
 #particle-canvas {
     position: fixed;
     inset: 0;
