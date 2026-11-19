@@ -1,75 +1,68 @@
-# ARA0062 — Vingadores 🎮
+# Eclipse: Fronteira Zero
 
-Projeto da disciplina **ARA0062 · Desenvolvimento Web em HTML5, CSS, JavaScript e PHP** — Centro Universitário Newton Paiva, 2026/2.
+Projeto da disciplina **ARA0062 — Desenvolvimento Web em HTML5, CSS, JavaScript e PHP**, do Centro Universitário Newton Paiva.
 
-## 🎯 Tema do projeto
+## Sobre o projeto
 
-Site de uma empresa fictícia de desenvolvimento de jogos. O projeto tem como objetivo apresentar a equipe como um estúdio de desenvolvimento de games, divulgando seus jogos, projetos e informações relacionadas ao universo dos games.
+Site conceitual de divulgação de **Eclipse: Fronteira Zero**, um RPG de ação sci-fi. A página apresenta a história do jogo, seu universo, personagens e edições, além de um formulário demonstrativo para quem deseja receber novidades.
 
-## 👥 Equipe
+## Páginas
+
+- **Página inicial (`frontend/index.html`)** — apresentação do jogo, universo, personagens, edições e formulário de contato.
+- **Listagem de contatos (`frontend/registros.html`)** — tabela responsiva com exemplos fictícios de pessoas interessadas em receber novidades.
+
+O formulário possui validação no navegador com JavaScript, mas ainda não envia nem armazena os dados. Da mesma forma, a página de registros usa conteúdo estático de demonstração; não há integração com PHP ou banco de dados nesta etapa.
+
+## Tecnologias e recursos
+
+- **HTML5** para a estrutura e o conteúdo das páginas.
+- **CSS3** para a identidade visual e a responsividade.
+- **JavaScript** para validar o formulário, exibir informações dos personagens e animar efeitos visuais.
+- **PHP** previsto para uma etapa futura; os arquivos do backend ainda não implementam processamento ou conexão com banco de dados.
+
+## Estrutura do projeto
+
+```text
+.
+├── README.md
+├── backend/
+│   ├── config/
+│   │   └── conexao.php
+│   └── processa_contato.php
+└── frontend/
+    ├── index.html
+    ├── registros.html
+    ├── form.html
+    ├── trabalho.html
+    ├── css/
+    │   ├── style.css
+    │   └── registros.css
+    ├── js/
+    │   └── script.js
+    └── img/
+        ├── kevin.png
+        ├── nyra.png
+        └── orin.png
+```
+
+`form.html` e `trabalho.html` são páginas adicionais do projeto. Os estilos principais do site ficam em `frontend/css/style.css`; a página de registros complementa esses estilos com `frontend/css/registros.css`.
+
+## Como visualizar
+
+1. Abra a pasta do projeto no VS Code.
+2. Abra `frontend/index.html` e inicie o **Live Server**.
+3. Para visualizar a tabela de demonstração, acesse `frontend/registros.html` pelo mesmo servidor.
+
+> O Live Server exibe as páginas estáticas, mas não executa PHP. A integração do backend e do banco de dados será feita posteriormente.
+
+## Equipe
 
 **Líder:** Mateus Teixeira Lopes
 
-| Nome completo | Matrícula | GitHub | Papel |
-|---|---|---|---|
+| Nome completo | Matrícula | GitHub | Responsabilidade |
+|---|---:|---|---|
 | Mateus Teixeira Lopes | 202508491028 | [@mathunder30](https://github.com/mathunder30) | Líder |
 | Theo Alvarenga Torres Dias | 202603008576 | [@theosistemas](https://github.com/theosistemas) | Responsável pelo PHP |
 | Gustavo Ferreira Rocha | 202603567681 | [@gustavof006](https://github.com/gustavof006) | Responsável pelo JavaScript |
 | Mateus Bueno Martins Marques | 202602794578 | [@mateusbueno10](https://github.com/mateusbueno10) | Integrante |
 | Igor Pereira Rios | 202602605023 | [@igorpereirarios-ux](https://github.com/igorpereirarios-ux) | Integrante |
-
-> Cada integrante acrescenta a sua própria linha nesta tabela pelo GitHub. Esse é o commit que registra a sua participação.
-
-## 📁 Estrutura do projeto
-
-> Estrutura obrigatória da disciplina. **Não renomeie pastas nem arquivos.**
-
-O projeto é separado em duas metades:
-- `frontend/` — guarda o que roda no navegador (HTML, CSS, JavaScript e imagens)
-- `backend/` — guarda o que roda no servidor (PHP)
-
-```
-.
-├── README.md
-├── frontend/
-│   ├── index.html
-│   ├── css/
-│   │   └── estilo.css
-│   ├── js/
-│   │   └── script.js
-│   └── img/
-│       └── .gitkeep
-└── backend/
-    ├── config/
-    │   └── conexao.php
-    └── processa-contato.php
-```
-
-> Os dois arquivos `.php` começam vazios, só com um comentário dentro. Eles existem desde já para que o lugar do código de servidor esteja combinado quando o PHP chegar.
-
-## 🚀 Como abrir o projeto
-
-1. Baixe ou clone o repositório.
-2. Abra a pasta no VS Code (**Arquivo → Abrir Pasta**).
-3. Abra `frontend/index.html`.
-4. Clique em **Go Live** utilizando a extensão *Live Server*.
-
-### Referenciando arquivos a partir do `index.html`
-
-Como o `index.html` está dentro de `frontend/`, os caminhos ficam assim:
-
-| Para chegar em... | Escreva no `index.html` |
-|---|---|
-| Folha de estilos | `css/estilo.css` |
-| Script | `js/script.js` |
-| Imagem | `img/foto.jpg` |
-| Arquivo do backend | `../backend/processa-contato.php` |
-
-> Os dois pontos (`..`) sobem uma pasta: saem do `frontend/` antes de entrar no `backend/`.
-
-## 🛠️ Tecnologias
-
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)
