@@ -102,6 +102,12 @@
   font-size:12px
 }
 
+.records-table .records-empty {
+  padding:28px 22px;
+  color:var(--muted);
+  text-align:center
+}
+
 .records-table tbody tr:last-child td {
   border-bottom:0
 }

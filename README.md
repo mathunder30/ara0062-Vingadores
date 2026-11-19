@@ -4,14 +4,14 @@ Projeto da disciplina **ARA0062 — Desenvolvimento Web em HTML5, CSS, JavaScrip
 
 ## Sobre o projeto
 
-Site conceitual de divulgação de **Eclipse: Fronteira Zero**, um RPG de ação sci-fi. A página apresenta a história do jogo, seu universo, personagens e edições, além de um formulário demonstrativo para quem deseja receber novidades.
+Site conceitual de divulgação de **Eclipse: Fronteira Zero**, um RPG de ação sci-fi. A página apresenta a história do jogo, seu universo, personagens e edições, além de um formulário para cadastro de pessoas interessadas em receber novidades.
 
 ## Páginas
 
 - **Página inicial (`frontend/index.html`)** — apresentação do jogo, universo, personagens, edições e formulário de contato.
-- **Listagem de contatos (`frontend/registros.html`)** — tabela responsiva com exemplos fictícios de pessoas interessadas em receber novidades.
+- **Listagem de contatos (`frontend/registros.php`)** — tabela responsiva com registros carregados do banco MySQL local.
 
-O formulário valida os campos no navegador e no PHP, e salva os contatos em uma tabela MySQL. A página de registros continua sendo uma demonstração estática.
+O formulário valida os campos no navegador e no PHP e salva os contatos em uma tabela MySQL.
 
 ## Tecnologias e recursos
 
@@ -32,7 +32,7 @@ O formulário valida os campos no navegador e no PHP, e salva os contatos em uma
 │   └── processa_contato.php
 └── frontend/
     ├── index.html
-    ├── registros.html
+    ├── registros.php
     ├── form.html
     ├── trabalho.html
     ├── css/
@@ -50,12 +50,15 @@ O formulário valida os campos no navegador e no PHP, e salva os contatos em uma
 
 ## Como visualizar
 
-1. Instale e inicie PHP com as extensões `pdo_mysql` e `mbstring`, além de um servidor MySQL (por exemplo, pelo XAMPP).
-2. No phpMyAdmin, importe `backend/schema.sql` para criar o banco `eclipse` e a tabela `contatos`.
-3. Configure `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER` e `DB_PASSWORD` se os valores locais não forem `127.0.0.1`, `3306`, `eclipse`, `root` e senha vazia.
-4. Na pasta raiz do projeto, inicie o servidor PHP com `php -S localhost:8000`.
-5. Acesse `http://localhost:8000/frontend/index.html`. O Live Server não executa PHP.
-6. A página `frontend/registros.html` ainda mostra os registros fictícios usados na demonstração.
+1. Coloque a pasta do projeto dentro de `C:\xampp\htdocs` (por exemplo, `C:\xampp\htdocs\ara0062-Vingadores`).
+2. No XAMPP Control Panel, inicie **Apache** e **MySQL**.
+3. Abra `http://localhost/phpmyadmin`, selecione **Importar** e importe `backend/schema.sql` para criar o banco `eclipse` e a tabela `contatos`.
+4. A conexão usa as variáveis de ambiente `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER` e `DB_PASSWORD`. No XAMPP padrão, host `127.0.0.1`, porta `3306`, banco `eclipse`, usuário `root` e senha vazia. Se o MySQL tiver senha, configure `DB_USER` e `DB_PASSWORD` nas variáveis do Windows acessíveis ao Apache e reinicie o Apache. Não coloque senhas no repositório.
+5. Acesse `http://localhost/ara0062-Vingadores/frontend/index.html`, envie o formulário e consulte os dados em `http://localhost/ara0062-Vingadores/frontend/registros.php`.
+
+> O formulário e a listagem precisam ser acessados pelo Apache; abrir os arquivos diretamente ou usar o Live Server não executa PHP.
+>
+> A listagem exibe nomes e e-mails cadastrados. Mantenha o acesso local e não publique essa página sem implementar controles de acesso adequados.
 
 ## Equipe
 
@@ -63,7 +66,7 @@ O formulário valida os campos no navegador e no PHP, e salva os contatos em uma
 
 | Nome completo | Matrícula | GitHub | Responsabilidade |
 |---|---:|---|---|
-| Mateus Teixeira Lopes | 202508491028 | [@mathunder30](https://github.com/mathunder30) | Líder; páginas HTML `index.html` e `registros.html`; estilização CSS |
+| Mateus Teixeira Lopes | 202508491028 | [@mathunder30](https://github.com/mathunder30) | Líder; página inicial e marcação HTML da listagem; estilização CSS |
 | Theo Alvarenga Torres Dias | 202603008576 | [@theosistemas](https://github.com/theosistemas) | Arquivos PHP `conexao.php` e `processa_contato.php` |
 | Gustavo Ferreira Rocha | 202603567681 | [@gustavof006](https://github.com/gustavof006) | JavaScript (`script.js`) |
 | Mateus Bueno Martins Marques | 202602794578 | [@mateusbueno10](https://github.com/mateusbueno10) | Integrante |
