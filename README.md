@@ -13,8 +13,8 @@ Site de uma empresa fictícia de desenvolvimento de jogos. O projeto tem como ob
 | Nome completo | Matrícula | GitHub | Papel |
 |---|---|---|---|
 | Mateus Teixeira Lopes | 202508491028 | [@mathunder30](https://github.com/mathunder30) | Líder |
-| Theo Alvarenga Torres Dias | 202603008576 | [@theosistemas](https://github.com/theosistemas) | Integrante |
-| Gustavo Ferreira Rocha | 202603567681 | [@gustavof006](https://github.com/gustavof006) | Integrante |
+| Theo Alvarenga Torres Dias | 202603008576 | [@theosistemas](https://github.com/theosistemas) | Responsável pelo PHP |
+| Gustavo Ferreira Rocha | 202603567681 | [@gustavof006](https://github.com/gustavof006) | Responsável pelo JavaScript |
 | Mateus Bueno Martins Marques | 202602794578 | [@mateusbueno10](https://github.com/mateusbueno10) | Integrante |
 | Igor Pereira Rios | 202602605023 | [@igorpereirarios-ux](https://github.com/igorpereirarios-ux) | Integrante |
 
