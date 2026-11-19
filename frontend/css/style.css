@@ -1008,3 +1008,29 @@ h1 {
 
 
 }
+
+
+
+
+/* Mensagens de validação do formulario*/
+.mensagem-erro {
+    display: block;
+    color: #ff5b5b;
+    font-size: 12px;
+    margin-top: 7px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* Campos inválidos */
+.campo-invalido {
+    border-color: #ff4545 !important;
+    outline: none;
+}
+
+/* Destaque visual ao focar no campo */
+.contact-form input:focus,
+.contact-form select:focus {
+    outline: 1px solid #c73535;
+    border-color: #c73535;
+}
