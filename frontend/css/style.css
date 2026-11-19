@@ -1035,6 +1035,17 @@ h1 {
     letter-spacing: 0.5px;
 }
 
+  .mensagem-retorno {
+    margin: 0 0 16px;
+    color: #a7d9b2;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .mensagem-retorno[data-status="erro"] {
+    color: #ff7b7b;
+  }
+
 /* Campos inválidos */
 .campo-invalido {
     border-color: #ff4545 !important;

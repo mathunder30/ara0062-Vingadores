@@ -11,14 +11,15 @@ Site conceitual de divulgação de **Eclipse: Fronteira Zero**, um RPG de ação
 - **Página inicial (`frontend/index.html`)** — apresentação do jogo, universo, personagens, edições e formulário de contato.
 - **Listagem de contatos (`frontend/registros.html`)** — tabela responsiva com exemplos fictícios de pessoas interessadas em receber novidades.
 
-O formulário possui validação no navegador com JavaScript, mas ainda não envia nem armazena os dados. Da mesma forma, a página de registros usa conteúdo estático de demonstração; não há integração com PHP ou banco de dados nesta etapa.
+O formulário valida os campos no navegador e no PHP, e salva os contatos em uma tabela MySQL. A página de registros continua sendo uma demonstração estática.
 
 ## Tecnologias e recursos
 
 - **HTML5** para a estrutura e o conteúdo das páginas.
 - **CSS3** para a identidade visual e a responsividade.
 - **JavaScript** para validar o formulário, exibir informações dos personagens e animar efeitos visuais.
-- **PHP** previsto para uma etapa futura; os arquivos do backend ainda não implementam processamento ou conexão com banco de dados.
+- **PHP** para processar o formulário e persistir contatos usando PDO.
+- **MySQL** para armazenar os contatos cadastrados.
 
 ## Estrutura do projeto
 
@@ -49,11 +50,12 @@ O formulário possui validação no navegador com JavaScript, mas ainda não env
 
 ## Como visualizar
 
-1. Abra a pasta do projeto no VS Code.
-2. Abra `frontend/index.html` e inicie o **Live Server**.
-3. Para visualizar a tabela de demonstração, acesse `frontend/registros.html` pelo mesmo servidor.
-
-> O Live Server exibe as páginas estáticas, mas não executa PHP. A integração do backend e do banco de dados será feita posteriormente.
+1. Instale e inicie PHP com as extensões `pdo_mysql` e `mbstring`, além de um servidor MySQL (por exemplo, pelo XAMPP).
+2. No phpMyAdmin, importe `backend/schema.sql` para criar o banco `eclipse` e a tabela `contatos`.
+3. Configure `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER` e `DB_PASSWORD` se os valores locais não forem `127.0.0.1`, `3306`, `eclipse`, `root` e senha vazia.
+4. Na pasta raiz do projeto, inicie o servidor PHP com `php -S localhost:8000`.
+5. Acesse `http://localhost:8000/frontend/index.html`. O Live Server não executa PHP.
+6. A página `frontend/registros.html` ainda mostra os registros fictícios usados na demonstração.
 
 ## Equipe
 

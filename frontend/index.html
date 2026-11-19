@@ -219,16 +219,16 @@
         <h2>SEU PRÓXIMO<br>CAPÍTULO <em>COMEÇA AQUI.</em></h2>
         <p>Deixe seu contato para receber novidades sobre o jogo, personagens e lançamento.</p>
       </div>
-      <form class="contact-form" action="#" method="get">
-        <label for="nome">SEU NOME</label><input id="nome" name="nome" 
-          placeholder="Como podemos chamar você?" >
-        <label for="email">SEU E-MAIL</label><input id="email" name="email" >
+      <form class="contact-form" action="../backend/processa_contato.php" method="post">
+        <label for="nome">SEU NOME</label><input id="nome" name="nome" type="text" maxlength="120" required
+          placeholder="Como podemos chamar você?">
+        <label for="email">SEU E-MAIL</label><input id="email" name="email" type="email" maxlength="254" required>
         <label for="interesse">O QUE VOCÊ QUER RECEBER?</label><select id="interesse" name="interesse">
           <option value="novidades">Novidades do jogo</option>
           <option value="lancamento">Aviso de lançamento</option>
           <option value="universo">Histórias do universo</option>
         </select>
-        <label class="check"><input type="checkbox" ><span>Concordo em receber novidades sobre Eclipse:
+        <label class="check"><input type="checkbox" name="consentimento" value="1" required><span>Concordo em receber novidades sobre Eclipse:
             Fronteira Zero.</span></label>
         <button class="button button-red" type="submit">Entrar no radar <span>↗</span></button>
       </form>

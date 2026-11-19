@@ -30,6 +30,21 @@ imagens.forEach((imagem) => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector(".contact-form");
+    const parametros = new URLSearchParams(window.location.search);
+    const resultado = parametros.get("contato");
+
+    if (resultado === "sucesso" || resultado === "erro") {
+        const mensagem = document.createElement("p");
+        mensagem.className = "mensagem-retorno";
+        mensagem.dataset.status = resultado;
+        mensagem.setAttribute("role", "status");
+        mensagem.setAttribute("aria-live", "polite");
+        mensagem.textContent = resultado === "sucesso"
+            ? "Transmissão recebida! Você entrou no radar de Eclipse."
+            : "Não foi possível registrar seu contato. Verifique a conexão com o banco de dados e tente novamente.";
+        form.querySelector("button[type=submit]").insertAdjacentElement("beforebegin", mensagem);
+        window.history.replaceState({}, "", window.location.pathname + window.location.hash);
+    }
 
     const nome = document.querySelector("#nome");
     const email = document.querySelector("#email");
@@ -139,8 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Validação antes do envio
     form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
         const nomeValido = validarNome();
         const emailValido = validarEmail();
         const interesseValido = validarInteresse();
@@ -152,15 +165,9 @@ document.addEventListener("DOMContentLoaded", () => {
             interesseValido &&
             consentimentoValido
         ) {
-            alert("Transmissão recebida! Você entrou no radar de Eclipse.");
-
-            form.reset();
-
-            // Limpa eventuais mensagens de erro
-            [nome, email, interesse, consentimento].forEach(campo => {
-                limparErro(campo);
-            });
+            return;
         } else {
+            event.preventDefault();
             const primeiroErro = form.querySelector(".campo-invalido");
 
             if (primeiroErro) {

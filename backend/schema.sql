@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS eclipse
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE eclipse;
+
+CREATE TABLE IF NOT EXISTS contatos (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(120) NOT NULL,
+  email VARCHAR(254) NOT NULL,
+  interesse ENUM('novidades', 'lancamento', 'universo') NOT NULL,
+  consentimento TINYINT(1) NOT NULL DEFAULT 1,
+  criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+);
