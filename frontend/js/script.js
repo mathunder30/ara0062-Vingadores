@@ -291,8 +291,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
 /* ===================================
-   ECLIPSE - EFEITO DE PARTICULAS
+   ECLIPSE - PARTICULAS COM TRANSICAO
 =================================== */
 
 (() => {
@@ -308,7 +309,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let altura;
     let particulas = [];
 
-    // Configurações
     const quantidade = 100;
     const cores = [
         "rgba(255, 255, 255, 0.7)",
@@ -316,7 +316,12 @@ document.addEventListener("DOMContentLoaded", function () {
         "rgba(160, 160, 180, 0.6)"
     ];
 
-    // Ajusta o tamanho do canvas
+    // Configuração da transição
+    let opacidadeGlobal = 0;
+    const duracaoTransicao = 2000;
+    let inicioTransicao = null;
+
+    // Tamanho da tela
     function redimensionar() {
 
         const escala = Math.min(window.devicePixelRatio || 1, 2);
@@ -328,10 +333,9 @@ document.addEventListener("DOMContentLoaded", function () {
         canvas.height = altura * escala;
 
         ctx.setTransform(escala, 0, 0, escala, 0, 0);
-
     }
 
-    // Cria uma partícula
+    // Criar partículas
     function criarParticula() {
 
         return {
@@ -343,10 +347,9 @@ document.addEventListener("DOMContentLoaded", function () {
             opacidade: Math.random() * 0.6 + 0.2,
             cor: cores[Math.floor(Math.random() * cores.length)]
         };
-
     }
 
-    // Inicializa as partículas
+    // Inicializar partículas
     function iniciar() {
 
         particulas = [];
@@ -354,13 +357,26 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = 0; i < quantidade; i++) {
             particulas.push(criarParticula());
         }
-
     }
 
-    // Desenha as partículas
-    function desenhar() {
+    // Animação
+    function desenhar(timestamp) {
 
         ctx.clearRect(0, 0, largura, altura);
+
+        // Controla a transição suave
+        if (inicioTransicao !== null) {
+
+            const progresso = Math.min(
+                (timestamp - inicioTransicao) / duracaoTransicao,
+                0.5
+            );
+
+            // Ease-in-out para entrada suave
+            opacidadeGlobal =
+                progresso * progresso * (3 - 2 * progresso);
+
+        }
 
         particulas.forEach((p) => {
 
@@ -375,27 +391,23 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             ctx.fillStyle = p.cor;
-            ctx.globalAlpha = p.opacidade;
+            ctx.globalAlpha = p.opacidade * opacidadeGlobal;
             ctx.shadowBlur = 8;
             ctx.shadowColor = p.cor;
+
             ctx.fill();
 
             // Movimento de queda
             p.y += p.velocidade;
             p.x += p.movimento;
-
-            // Pequena variação de movimento
             p.x += Math.sin(p.y * 0.01) * 0.2;
 
-            // Quando sair da tela, reaparece no topo
+            // Reposicionar quando sair da tela
             if (p.y > altura + 10) {
-
                 p.y = -10;
                 p.x = Math.random() * largura;
-
             }
 
-            // Reaparece nas laterais
             if (p.x > largura + 10) p.x = -10;
             if (p.x < -10) p.x = largura + 10;
 
@@ -405,26 +417,31 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.shadowBlur = 0;
 
         requestAnimationFrame(desenhar);
-
     }
 
-    // Redimensionamento da tela
+    // Configurar tela
     window.addEventListener("resize", () => {
-
         redimensionar();
         iniciar();
-
     });
 
-    // Respeita a preferência por movimento reduzido
+    // Respeitar preferência de movimento reduzido
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         return;
     }
 
     redimensionar();
     iniciar();
-    desenhar();
+
+    // Começa a animação sem partículas visíveis
+    requestAnimationFrame(desenhar);
+
+    // Aguarda 2 segundos para iniciar o aparecimento
+    setTimeout(() => {
+        inicioTransicao = performance.now();
+    }, 200);
 
 })();
+
 
 
