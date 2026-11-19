@@ -158,7 +158,12 @@ nav a:hover,.footer-links a:hover {
   z-index:2;
   top:22%;
   left:11%;
-  max-width:540px
+  width:78vw;
+  max-width:760px
+}
+
+.hero h1 {
+  white-space:nowrap
 }
 
 .eyebrow {
@@ -192,7 +197,7 @@ h1,h2 {
 }
 
 h1 {
-  font-size:clamp(66px,9vw,126px);
+  font-size:clamp(56px,8vw,108px);
   margin-top:26px
 }
 
@@ -844,11 +849,12 @@ h1 em,h2 em {
 .hero-content {
   top:21%;
   left:7%;
-  right:7%
+  right:7%;
+  width:auto
 }
 
 h1 {
-  font-size:clamp(62px,17vw,95px)
+  font-size:clamp(30px,9vw,58px)
 }
 
 .hero-copy {
