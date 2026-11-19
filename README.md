@@ -61,8 +61,8 @@ O formulário possui validação no navegador com JavaScript, mas ainda não env
 
 | Nome completo | Matrícula | GitHub | Responsabilidade |
 |---|---:|---|---|
-| Mateus Teixeira Lopes | 202508491028 | [@mathunder30](https://github.com/mathunder30) | Líder |
-| Theo Alvarenga Torres Dias | 202603008576 | [@theosistemas](https://github.com/theosistemas) | Responsável pelo PHP |
-| Gustavo Ferreira Rocha | 202603567681 | [@gustavof006](https://github.com/gustavof006) | Responsável pelo JavaScript |
+| Mateus Teixeira Lopes | 202508491028 | [@mathunder30](https://github.com/mathunder30) | Líder; páginas HTML `index.html` e `registros.html`; estilização CSS |
+| Theo Alvarenga Torres Dias | 202603008576 | [@theosistemas](https://github.com/theosistemas) | Arquivos PHP `conexao.php` e `processa_contato.php` |
+| Gustavo Ferreira Rocha | 202603567681 | [@gustavof006](https://github.com/gustavof006) | JavaScript (`script.js`) |
 | Mateus Bueno Martins Marques | 202602794578 | [@mateusbueno10](https://github.com/mateusbueno10) | Integrante |
 | Igor Pereira Rios | 202602605023 | [@igorpereirarios-ux](https://github.com/igorpereirarios-ux) | Integrante |
