@@ -1,6 +1,6 @@
 <?php
 
-function redirecionar(string $resultado): never
+function redirecionar(string $resultado): void
 {
 	header('Location: ../frontend/index.html?contato=' . $resultado . '#contato');
 	exit;
