@@ -6,18 +6,19 @@ Projeto da disciplina **ARA0062 — Desenvolvimento Web em HTML5, CSS, JavaScrip
 
 Site conceitual de divulgação de **Eclipse: Fronteira Zero**, um RPG de ação sci-fi. A página apresenta a história do jogo, seu universo, personagens e edições, além de um formulário para cadastro de pessoas interessadas em receber novidades.
 
-## Páginas
+## Páginas e funcionalidades
 
 - **Página inicial (`frontend/index.html`)** — apresentação do jogo, universo, personagens, edições e formulário de contato.
-- **Listagem de contatos (`frontend/registros.php`)** — tabela responsiva com registros carregados do banco MySQL local.
+- **Página de registros (`frontend/registros.php`)** — lista os contatos salvos no MySQL, com nome, e-mail, interesse e data do cadastro.
+- **Página do trabalho (`frontend/trabalho.html`)** — página complementar da atividade.
 
-O formulário valida os campos no navegador e no PHP e salva os contatos em uma tabela MySQL.
+O formulário da página inicial valida os dados no navegador e no servidor. O PHP salva os contatos usando PDO; a página de registros consulta a tabela `contatos`.
 
 ## Tecnologias e recursos
 
 - **HTML5** para a estrutura e o conteúdo das páginas.
 - **CSS3** para a identidade visual e a responsividade.
-- **JavaScript** para validar o formulário, exibir informações dos personagens e animar efeitos visuais.
+- **JavaScript** para validar o formulário, abrir o modal com informações dos personagens e animar efeitos visuais.
 - **PHP** para processar o formulário e persistir contatos usando PDO.
 - **MySQL** para armazenar os contatos cadastrados.
 
@@ -29,11 +30,11 @@ O formulário valida os campos no navegador e no PHP e salva os contatos em uma 
 ├── backend/
 │   ├── config/
 │   │   └── conexao.php
-│   └── processa_contato.php
+│   ├── processa_contato.php
+│   └── schema.sql
 └── frontend/
     ├── index.html
     ├── registros.php
-    ├── form.html
     ├── trabalho.html
     ├── css/
     │   ├── style.css
@@ -46,17 +47,17 @@ O formulário valida os campos no navegador e no PHP e salva os contatos em uma 
         └── orin.png
 ```
 
-`form.html` e `trabalho.html` são páginas adicionais do projeto. Os estilos principais do site ficam em `frontend/css/style.css`; a página de registros complementa esses estilos com `frontend/css/registros.css`.
+Os estilos principais ficam em `frontend/css/style.css`; a página de registros também usa `frontend/css/registros.css`. As imagens dos personagens ficam em `frontend/img/`, e o JavaScript em `frontend/js/script.js`.
 
 ## Como visualizar
 
-1. Coloque a pasta do projeto dentro de `C:\xampp\htdocs` (por exemplo, `C:\xampp\htdocs\ara0062-Vingadores`).
+1. Copie a pasta do projeto para `C:\xampp\htdocs\ara0062-Vingadores` (ou ajuste as URLs abaixo ao nome da pasta usada dentro de `htdocs`).
 2. No XAMPP Control Panel, inicie **Apache** e **MySQL**.
-3. Abra `http://localhost/phpmyadmin`, selecione **Importar** e importe `backend/schema.sql` para criar o banco `eclipse` e a tabela `contatos`.
-4. A conexão usa as variáveis de ambiente `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER` e `DB_PASSWORD`. No XAMPP padrão, host `127.0.0.1`, porta `3306`, banco `eclipse`, usuário `root` e senha vazia. Se o MySQL tiver senha, configure `DB_USER` e `DB_PASSWORD` nas variáveis do Windows acessíveis ao Apache e reinicie o Apache. Não coloque senhas no repositório.
-5. Acesse `http://localhost/ara0062-Vingadores/frontend/index.html`, envie o formulário e consulte os dados em `http://localhost/ara0062-Vingadores/frontend/registros.php`.
+3. No phpMyAdmin (`http://localhost/phpmyadmin`), importe `backend/schema.sql`. Ele cria o banco `eclipse` e a tabela `contatos`.
+4. Na configuração padrão do XAMPP, a conexão usa `127.0.0.1:3306`, banco `eclipse`, usuário `root` e senha vazia. A aplicação também aceita as variáveis de ambiente `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER` e `DB_PASSWORD`. Se alterar as credenciais, configure-as no ambiente disponível ao Apache e reinicie o serviço. Não salve senhas no repositório.
+5. Abra `http://localhost/ara0062-Vingadores/frontend/index.html`. Depois de enviar o formulário, veja os cadastros em `http://localhost/ara0062-Vingadores/frontend/registros.php`.
 
-> O formulário e a listagem precisam ser acessados pelo Apache; abrir os arquivos diretamente ou usar o Live Server não executa PHP.
+> O formulário e a listagem precisam ser acessados pelo Apache; abrir os arquivos diretamente ou usar o Live Server não executa PHP. O PHP precisa ter PDO, PDO MySQL e `mbstring` habilitados.
 >
 > A listagem exibe nomes e e-mails cadastrados. Mantenha o acesso local e não publique essa página sem implementar controles de acesso adequados.
 
